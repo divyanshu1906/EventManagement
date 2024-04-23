@@ -36,6 +36,9 @@ app.get('/register', (req, res) =>{
     res.sendFile(path.join(static_path1, "signIn.html"));
 })
 
+app.get('/login', (req, res) =>{
+    res.sendFile(path.join(static_path2, "index.html"));
+})
 app.post('/signup', async (req, res)=>{
     try {
         const password = req.body.password;
@@ -52,7 +55,7 @@ app.post('/signup', async (req, res)=>{
                 confirmPassword: confirmPassword
             })
             const registered = await registerStudent.save();
-            res.status(201).send(index);
+            res.redirect('/login');
         }else{
             res.send("password are not matching");
         }

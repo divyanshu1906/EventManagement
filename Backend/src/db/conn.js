@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb://localhost:27017/EventMangementUsers")
+mongoose.connect("mongodb+srv://divyanshusinha19:divyanshu@cluster0.mhpje5x.mongodb.net/")
 .then(() => {
     console.log("Connection successful");
 }).catch((e) => {
