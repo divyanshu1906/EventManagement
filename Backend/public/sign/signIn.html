@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f8f9fa; /* Light gray background */
+        background: linear-gradient(to right, #667eea, #764ba2); /* Gradient background */
+        background-position: center;
+      }
+
+      .container {
+        width: 80%; /* Adjusted width */
+        max-width: 450px; /* Adjusted max-width */
+        margin: 50px auto;
+        padding: 30px; /* Increased padding for better spacing */
+        border-radius: 10px;
+        border: 2px solid rgba(0, 0, 0, 0.2); /* Black border with opacity */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+        background-color: rgba(255, 255, 255, 0.8); /* Lighter white background with opacity */
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px; /* Add spacing below the header */
+        color: #333; /* Dark text color */
+      }
+
+      .form-group {
+        margin-bottom: 25px; /* Increased margin for better spacing */
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px; /* Reduced margin for better alignment */
+        color: #333; /* Text color */
+      }
+
+      .input-box {
+        position: relative;
+      }
+
+      input, select {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc; /* Light gray border */
+        transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+        background: transparent; /* Make background transparent */
+        outline: none; /* Remove outline */
+      }
+
+      input:focus, select:focus {
+        border-color: #667eea; /* Blue border on focus */
+        box-shadow: 0 0 10px rgba(102, 126, 234, 0.5); /* Add shadow on focus */
+      }
+
+      small {
+        color: #888;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        background-color: #667eea; /* Blue button background */
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Smooth background transition */
+      }
+
+      button:hover {
+        background-color: #764ba2; /* Darker blue on hover */
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign-Up</h2>
+        <form action="/signup" method="post" id="signupForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <div class="input-box">
+                  <input type="text" id="name" name="name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <div class="input-box">
+                  <select id="gender" name="gender" required>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                  </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <div class="input-box">
+                  <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <div class="input-box">
+                  <input type="tel" id="phone" name="phone">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="registrationNumber">Registration Number:</label>
+                <div class="input-box">
+                  <input type="text" id="registrationNumber" name="registrationNumber" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <div class="input-box">
+                  <input type="password" id="password" name="password" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <div class="input-box">
+                  <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+            </div>
+            <button type="submit" class="signup-btn">Signup</button>
+        </form>
+    </div>
+</body>
+</html>

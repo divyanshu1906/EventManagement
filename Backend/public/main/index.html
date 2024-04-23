@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            background: linear-gradient(to right, #667eea, #764ba2); /* Gradient background */
+            background-position: center;
+        }
+
+        .wrapper {
+            width: 420px;
+            background: #fff; /* White background */
+            border: 2px solid rgba(0, 0, 0, .2); /* Black border with opacity */
+            border-radius: 10px;
+            padding: 30px 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Box shadow */
+        }
+
+        .wrapper h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-top: 10px;
+            margin-bottom: 50px;
+            color: #333; /* Dark text color */
+        }
+
+        .wrapper .input-box {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .input-box input {
+            padding: 15px 0; /* Reduced vertical padding */
+            padding-left: 25px; /* Adjust left padding */
+            width: calc(100% - 25px); /* Adjust width to accommodate padding */
+            border: none; /* Remove border */
+            border-bottom: 2px solid #ddd; /* Add bottom border */
+            background: transparent; /* Make background transparent */
+            outline: none; /* Remove outline */
+            font-size: 16px;
+            transition: border-color 0.3s ease; /* Smooth border transition */
+        }
+
+        .input-box input:focus {
+            border-color: #667eea; /* Border color on focus */
+            padding-left: 35px; /* Keep the same padding on focus */
+        }
+
+        .input-box input::placeholder {
+            color: #999; /* Placeholder text color */
+            padding-left: 25px; /* Adjust left padding for placeholder */
+        }
+
+        .input-box i {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888; /* Icon color */
+            padding: 0 10px; /* Adjust padding for icon */
+        }
+
+        .wrapper .forget {
+            margin: 15px 0;
+            text-align: right; /* Align to the right */
+        }
+
+        .forget a {
+            color: #888; /* Link color */
+            text-decoration: none;
+        }
+
+        .forget a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .wrapper .login-btn {
+            width: 100%;
+            height: 50px; /* Reduced height */
+            margin-top: 40px;
+            border-radius: 30px;
+            background: #667eea; /* Button background color */
+            border: none;
+            color: #fff; /* Button text color */
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth background transition */
+        }
+
+        .login-btn:hover {
+            background: #764ba2; /* Darker background color on hover */
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #888; /* Text color */
+        }
+
+        .register-link a {
+            color: #667eea; /* Link color */
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <form action="/login" method="post">
+        <h1>Login</h1>
+        <div class="input-box">
+            <i class="bx bxs-user"></i>
+            <input
+                    type="text"
+                    placeholder="Registration Number"
+                    name="registrationNumber"
+            />
+        </div>
+        <div class="input-box">
+            <i class="bx bxs-lock-alt"></i>
+            <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    required
+            />
+        </div>
+        <div class="forget">
+            <a href="#">Forget password?</a>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+        <div class="register-link">
+            <p>
+                Don't have an account?
+                <a class="register" href="/register"> Register</a>
+            </p>
+        </div>
+    </form>
+</div>
+</body>
+</html>

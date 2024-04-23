@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>University Events</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      /* Add custom CSS styles here */
+      /* You can customize further as per your design */
+
+      /* Background color and font */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+
+      /* Navbar */
+      .navbar {
+        background-color: #343a40; /* Dark grey */
+      }
+
+      .navbar-brand,
+      .navbar-nav .nav-link {
+        color: #fff; /* White */
+      }
+
+      .navbar-brand:hover,
+      .navbar-nav .nav-link:hover {
+        color: #f8f9fa; /* Light grey */
+      }
+
+      /* Add event button */
+      #toggleEventFormBtn {
+        background-color: #007bff; /* Blue */
+        border-color: #007bff; /* Blue */
+        margin-right: 10px;
+      }
+
+      #toggleEventFormBtn:hover {
+        background-color: #0056b3; /* Darker blue */
+      }
+
+      /* Logout button */
+      #logoutBtn {
+        background-color: #dc3545; /* Red */
+        border-color: #dc3545; /* Red */
+      }
+
+      #logoutBtn:hover {
+        background-color: #bd2130; /* Darker red */
+      }
+
+      /* Styled box for 'No event today' message */
+      .no-event-box {
+        background-color: #f8d7da; /* Light red */
+        border: 1px solid #f5c6cb; /* Lighter red */
+        color: #721c24; /* Dark red */
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+
+      /* Styled box for event details */
+      .event-box {
+        background-color: #fff; /* White */
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .event-box:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .event-box p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 10px;
+      }
+
+      .event-box a {
+        color: #007bff; /* Blue */
+      }
+
+      .event-box a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">University Events</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">OTP Checker</a>
+            </li>
+          </ul>
+          <!-- Check if the URL pattern for main.html matches -->
+          <a id="toggleEventFormBtn" class="btn btn-primary">Add Event</a>
+          <a id="logoutBtn" class="btn btn-danger" href="#" onclick="logout()"
+            >Logout</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <h1>Welcome to University Events Portal</h1>
+      <hr />
+
+      <!-- Add a form to capture event details -->
+      <div id="eventForm" style="display: none">
+        <h2>Add Event</h2>
+        <form id="addEventForm">
+          <div class="form-group">
+            <label for="eventName">Event Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="eventName"
+              name="eventName"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventOrganizer">Organizer</label>
+            <input
+              type="text"
+              class="form-control"
+              id="eventOrganizer"
+              name="eventOrganizer"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="eventDate"
+              name="eventDate"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="startTime">Start Time</label>
+            <input
+              type="time"
+              class="form-control"
+              id="startTime"
+              name="startTime"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="endTime">End Time</label>
+            <input
+              type="time"
+              class="form-control"
+              id="endTime"
+              name="endTime"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="eventPlace">Place</label>
+            <input
+              type="text"
+              class="form-control"
+              id="eventPlace"
+              name="eventPlace"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="dutyLeaves">Duty Leaves Provided</label>
+            <input
+              type="text"
+              class="form-control"
+              id="dutyLeaves"
+              name="dutyLeaves"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="googleFormLink">Google Form Link</label>
+            <input
+              type="url"
+              class="form-control"
+              id="googleFormLink"
+              name="googleFormLink"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary" name="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+
+      <div id="eventDetails" class="container mt-5">
+        <h2>Event Details</h2>
+        <!-- Event details will be dynamically updated here -->
+        <div id="googleFormResponses">
+          <!-- Google Form responses will be displayed here -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          // Fetch and render events when the page loads
+          fetchAndRenderEvents();
+  
+          // Toggle event form visibility
+          const toggleEventFormBtn = document.getElementById("toggleEventFormBtn");
+          const eventForm = document.getElementById("eventForm");
+  
+          toggleEventFormBtn.addEventListener("click", function () {
+              eventForm.style.display = eventForm.style.display === "none" ? "block" : "none";
+          });
+  
+          // Handle form submission
+          const addEventForm = document.getElementById("addEventForm");
+          addEventForm.addEventListener("submit", function (event) {
+              event.preventDefault();
+  
+              // Extract event details from the form
+              const eventData = {
+                  eventName: document.getElementById("eventName").value,
+                  eventOrganizer: document.getElementById("eventOrganizer").value,
+                  eventDate: document.getElementById("eventDate").value,
+                  startTime: document.getElementById("startTime").value,
+                  endTime: document.getElementById("endTime").value,
+                  eventPlace: document.getElementById("eventPlace").value,
+                  dutyLeaves: document.getElementById("dutyLeaves").value,
+                  googleFormLink: document.getElementById("googleFormLink").value,
+              };
+  
+              console.log("Form data:", eventData); // Log form data
+  
+              // Perform AJAX request to add the event
+              fetch("/addEvent", {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(eventData),
+              })
+                  .then((response) => {
+                      console.log("Response status:", response.status); // Log response status
+                      if (!response.ok) {
+                          throw new Error("Network response was not ok");
+                      }
+                      return response.json();
+                  })
+                  .then((data) => {
+                      console.log("Response data:", data); // Log response data
+  
+                      // Update the UI with the added event details
+                      renderEventDetails(data.savedEvent, data.otp);
+  
+                      // Clear the form inputs after adding the event
+                      addEventForm.reset();
+  
+                      // Hide the event form
+                      eventForm.style.display = "none";
+  
+                      // Fetch and render events again after adding the event
+                      fetchAndRenderEvents();
+                  })
+                  .catch((error) => {
+                      console.error("Error during event addition:", error);
+                  });
+          });
+  
+          // Add event listener to Google Form links
+          document.addEventListener("click", function (event) {
+              if (event.target && event.target.tagName === "A" && event.target.classList.contains("google-form-link")) {
+                  // Extract event ID from data attribute
+                  const eventId = event.target.getAttribute("data-event-id");
+  
+                  // Make AJAX request to update OTP to "none"
+                  fetch(`/updateOTP/${eventId}`, {
+                      method: "POST",
+                      headers: {
+                          "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({ otp: "none" }),
+                  })
+                      .then((response) => {
+                          if (!response.ok) {
+                              throw new Error("Network response was not ok");
+                          }
+                          return response.json();
+                      })
+                      .then((data) => {
+                          // Update the UI to display "none" as the OTP for this event
+                          const otpElement = document.getElementById(`otp-${eventId}`);
+                          if (otpElement) {
+                              otpElement.textContent = "none";
+                          }
+                      })
+                      .catch((error) => {
+                          console.error("Error updating OTP:", error);
+                      });
+              }
+          });
+      });
+  
+      function fetchAndRenderEvents() {
+          fetch("/fetchEvents")
+              .then((response) => response.json())
+              .then((data) => {
+                  console.log("Fetched events:", data);
+                  renderEvents(data);
+              })
+              .catch((error) => console.error("Error fetching events:", error));
+      }
+  
+      function renderEvents(events, otp) {
+          const eventDetailsContainer = document.getElementById("eventDetails");
+          eventDetailsContainer.innerHTML = ""; // Clear existing content
+  
+          if (events.length === 0) {
+              const noEventBox = document.createElement("div");
+              noEventBox.classList.add("no-event-box");
+              noEventBox.textContent = "No event today";
+              eventDetailsContainer.appendChild(noEventBox);
+          } else {
+              events.forEach((event) => {
+                  const eventDiv = document.createElement("div"); // Create a new container for each event
+                  eventDiv.classList.add("event-box");
+  
+                  // Parse the event date string into a Date object
+                  const eventDate = new Date(event.eventDate);
+  
+                  // Format the event date as desired (e.g., "YYYY-MM-DD")
+                  const formattedDate = `${eventDate.getFullYear()}-${(eventDate.getMonth() + 1)
+                      .toString()
+                      .padStart(2, "0")}-${eventDate.getDate().toString().padStart(2, "0")}`;
+  
+                  const eventHTML = `
+                      <h2>Event Details</h2>
+                      <p><strong>Name:</strong> ${event.eventName}</p>
+                      <p><strong>Organizer:</strong> ${event.eventOrganizer}</p>
+                      <p><strong>Date:</strong> ${formattedDate}</p>
+                      <p><strong>Time:</strong> ${event.startTime} to ${event.endTime}</p>
+                      <p><strong>Place:</strong> ${event.eventPlace}</p>
+                      <p><strong>Duty Leaves:</strong> ${event.dutyLeaves}</p>
+                      <p><strong>Google Form Link:</strong> <a href="${event.googleFormLink}" class="google-form-link" data-event-id="${event._id}" target="_blank">${event.googleFormLink}</a></p>
+                      <p><strong>OTP:</strong> <span id="otp-${event._id}">${event.otp}</span></p> <!-- Display OTP -->
+                  `;
+                  eventDiv.innerHTML = eventHTML; // Set inner HTML of the event container
+                  eventDetailsContainer.appendChild(eventDiv); // Append event container to the main container
+              });
+          }
+      }
+  
+      function logout() {
+          fetch("/logout", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({}),
+          })
+              .then((response) => {
+                  if (response.redirected) {
+                      // Redirect to the login page after successful logout
+                      window.location.href = response.url;
+                  } else {
+                      console.error("Logout failed");
+                  }
+              })
+              .catch((error) => {
+                  console.error("Error during logout:", error);
+              });
+      }
+  </script>
+
+    <script src="http://localhost:35729/livereload.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
