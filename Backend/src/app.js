@@ -15,7 +15,7 @@ const Register = require("./models/signUp");
 const Event = require("./models/event"); 
 const GoogleFormResponse = require("./models/googleFormResponse"); 
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 const static_path = path.join(__dirname, "../public");
 app.use(express.static(static_path));
